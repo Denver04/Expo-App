@@ -38,7 +38,6 @@ export default function Login() {
           <TextInput
             style={styles.textInput}
             placeholder="Enter your Username"
-            maxLength={10}
             value={userDetails.username}
             onChangeText={(text: string) =>
               setUserDetails({ ...userDetails, username: text })
@@ -47,22 +46,21 @@ export default function Login() {
           <TextInput
             style={styles.textInput}
             placeholder="Enter Password"
-            maxLength={20}
             value={userDetails.password}
             secureTextEntry
             onChangeText={(text: string) =>
               setUserDetails({ ...userDetails, password: text })
             }
           />
-          {/* <Link href="/" asChild> */}
-          <Pressable>
-            <Button
-              title={isSubmit ? "Submitting..." : "Login"}
-              onPress={handlePress}
-              disabled={isSubmit}
-            />
-          </Pressable>
-          {/* </Link> */}
+          <Link href="/" asChild>
+            <Pressable>
+              <Button
+                title={isSubmit ? "Submitting..." : "Login"}
+                onPress={handlePress}
+                disabled={isSubmit}
+              />
+            </Pressable>
+          </Link>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
