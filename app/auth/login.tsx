@@ -52,13 +52,14 @@ export default function Login() {
               setUserDetails({ ...userDetails, password: text })
             }
           />
-          <Link href="/" asChild>
+          <Link href="/(insta)/search" asChild>
             <Pressable>
-              <Button
+              {/* <Button
                 title={isSubmit ? "Submitting..." : "Login"}
                 onPress={handlePress}
                 disabled={isSubmit}
-              />
+              /> */}
+              <Text>Login</Text>
             </Pressable>
           </Link>
         </View>
