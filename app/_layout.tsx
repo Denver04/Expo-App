@@ -1,13 +1,23 @@
+import { ColorContext, useThemeContext } from "@/ColorModeContext/ColorContext";
 import { Stack } from "expo-router";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Button } from "react-native";
 
-export default function RootLayout() {
+function ThemedLayout() {
+  const {colors, toggleTheme } = useThemeContext();
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: colors.background }}
+    >
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: "#6e1b1bff" },
-          headerTintColor: "#fff",
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTintColor: colors.text,
+          headerRight: () => {
+            return <Button title="Toggle" onPress={toggleTheme} color={colors.primary} />;
+          }
         }}
       >
         <Stack.Screen name="index" options={{ headerShown: true }} />
@@ -16,5 +26,13 @@ export default function RootLayout() {
         <Stack.Screen name="(insta)" options={{ headerShown: false }} />
       </Stack>
     </SafeAreaView>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <ColorContext>
+      <ThemedLayout />
+    </ColorContext>
   );
 }
